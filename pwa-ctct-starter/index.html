@@ -5,55 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CTĐ, CTCT – Trang chủ</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
-    }
-  </script>
   <style>
-    :root{--brand:#a00000;--brand-600:#800000;--bg:#f5f6f8;--card:#fff;--border:#e5e7eb;--text:#111827;--muted:#6b7280}
-    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-    .topbar{display:flex;align-items:center;gap:12px;background:var(--brand);color:#fff;padding:14px 16px}
-    .topbar h1{margin:0;font-size:18px;font-weight:700}
-    .container{max-width:980px;margin:18px auto;padding:0 12px}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}} @media (max-width:600px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:18px}
-    .card h3{margin:0 0 6px} .card p{margin:0 0 14px;color:var(--muted)}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;background:#eee;color:#333;text-decoration:none;font-weight:600}
-    .btn:hover{background:#ddd} .btn-primary{background:var(--brand);color:#fff} .btn-primary:hover{background:var(--brand-600)}
-    footer{margin:26px 0;color:var(--muted);font-size:13px;text-align:center}
+    :root {
+      --brand: #a00000;
+      --brand-dark: #800000;
+      --bg-light: #fff7ed;
+      --text: #111827;
+      --muted: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--brand);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .hero {
+      text-align: center;
+      padding: 40px 16px 20px;
+      color: #fff;
+      background: var(--brand);
+      background-image: url('assets/pattern.png'); /* nền mờ PNG */
+      background-size: cover;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fffaf3;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      padding: 24px 20px;
+      text-align: center;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card.active { border: 2px solid var(--brand); }
+
+    .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      opacity: .9;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .3s ease;
+    }
+    .btn.disabled {
+      background: #f0f0f0;
+      color: #888;
+      pointer-events: none;
+    }
+    .btn.active {
+      background: var(--brand);
+      color: #fff;
+    }
+    footer {
+      margin: 30px 0;
+      text-align: center;
+      color: #f5dada;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <h1>ỨNG DỤNG HỌC TẬP VÀ KIỂM TRA CHÍNH TRỊ CỦA BAN CHI HUY PTKV3 - TÂN YÊN/ BỘ CHQS TỈNH BẮC NINH</h1>
+  <header class="hero">
+    <h1>ỨNG DỤNG HỌC TẬP VÀ KIỂM TRA NHẬN THỨC CHÍNH TRỊ<br>
+      CỦA BAN CHỈ HUY PTKV3 – TÂN YÊN / BỘ CHQS TỈNH BẮC NINH</h1>
   </header>
 
   <main class="container">
-    <div class="grid">
-      <section class="card">
-        <h3>Làm bài kiểm tra</h3>
-        <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
-        <a class="btn btn-primary" href="quiz.html">Vào làm bài →</a>
-      </section>
+    <!-- Card 1: Tài liệu -->
+    <section class="card" data-link="materials.html">
+      <div class="icon">📖</div>
+      <h3>Tài liệu học tập</h3>
+      <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
+      <a class="btn disabled">Mở tài liệu</a>
+    </section>
 
-      <section class="card">
-        <h3>Tài liệu học tập</h3>
-        <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
-        <a class="btn" href="materials.html">Mở tài liệu</a>
-      </section>
+    <!-- Card 2: Làm bài -->
+    <section class="card" data-link="quiz.html">
+      <div class="icon">📝</div>
+      <h3>Làm bài kiểm tra</h3>
+      <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
+      <a class="btn disabled">Vào làm bài</a>
+    </section>
 
-      <section class="card">
-        <h3>Tra cứu kết quả</h3>
-        <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
-        <!-- Thay bằng link Sheets của anh -->
-        <a class="btn" href="#" target="_blank" rel="noopener">Mở bảng điểm</a>
-      </section>
-    </div>
+    <!-- Card 3: Bảng điểm -->
+    <section class="card" data-link="https://docs.google.com/spreadsheets/d/ID/edit?usp=sharing">
+      <div class="icon">📊</div>
+      <h3>Tra cứu kết quả</h3>
+      <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
+      <a class="btn disabled" target="_blank" rel="noopener">Mở bảng điểm</a>
+    </section>
   </main>
 
-  <footer>© Đơn vị: Ban Chỉ huy PTKV3 - Tân Yên</footer>
+  <footer>© Đơn vị: Ban Chỉ huy PTKV3 – Tân Yên</footer>
+
+  <script>
+    document.querySelectorAll('.card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        document.querySelectorAll('.card').forEach(c=>{
+          c.classList.remove('active');
+          c.querySelector('.btn').classList.remove('active');
+          c.querySelector('.btn').classList.add('disabled');
+        });
+        card.classList.add('active');
+        const btn = card.querySelector('.btn');
+        btn.classList.remove('disabled');
+        btn.classList.add('active');
+        const link = card.dataset.link;
+        if (btn.tagName==='A') btn.href = link;
+      });
+    });
+  </script>
 </body>
 </html>
-
