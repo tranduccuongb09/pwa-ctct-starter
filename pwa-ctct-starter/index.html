@@ -6,7 +6,6 @@
   <title>CTĐ, CTCT – Trang chủ</title>
 
   <link rel="manifest" href="manifest.webmanifest">
-  <!-- Dùng style.css đã cập nhật (có phần HOME) -->
   <link rel="stylesheet" href="style.css" />
 
   <script>
@@ -26,7 +25,7 @@
 
   <div class="home-wrap">
     <main class="home-grid">
-      <!-- 1) Tài liệu học tập (đứng trước) -->
+      <!-- 1) Tài liệu học tập -->
       <section class="home-card" data-link="materials.html">
         <div class="home-icon">📖</div>
         <h3>Tài liệu học tập</h3>
@@ -57,25 +56,21 @@
   </div>
 
   <script>
-    // Chọn card -> nút mờ chuyển đỏ + gán link
-    document.querySelectorAll('.home-card').forEach(card => {
-      card.addEventListener('click', () => {
-        document.querySelectorAll('.home-card').forEach(c => {
+    // Click card -> bật nút, gán link (nút mờ -> đỏ)
+    document.querySelectorAll('.home-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        document.querySelectorAll('.home-card').forEach(c=>{
           c.classList.remove('home-active');
-          const b = c.querySelector('.home-btn');
-          b.classList.remove('is-active');
-          b.classList.add('is-disabled');
+          const b=c.querySelector('.home-btn');
+          b.classList.remove('is-active'); b.classList.add('is-disabled');
         });
-
         card.classList.add('home-active');
-        const btn = card.querySelector('.home-btn');
-        btn.classList.remove('is-disabled');
-        btn.classList.add('is-active');
+        const btn=card.querySelector('.home-btn');
+        btn.classList.remove('is-disabled'); btn.classList.add('is-active');
 
-        const href = card.dataset.link || '#';
-        const blank = card.dataset.blank === '1';
-        btn.href = href;
-        btn.target = blank ? '_blank' : '_self';
+        const href=card.dataset.link||'#';
+        const blank=card.dataset.blank==='1';
+        btn.href=href; btn.target=blank?'_blank':'_self';
       });
     });
   </script>
