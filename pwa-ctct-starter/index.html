@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CTĐ, CTCT – Trang chủ</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+    }
+  </script>
+  <style>
+    :root{--brand:#a00000;--brand-600:#800000;--bg:#f5f6f8;--card:#fff;--border:#e5e7eb;--text:#111827;--muted:#6b7280}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    .topbar{display:flex;align-items:center;gap:12px;background:var(--brand);color:#fff;padding:14px 16px}
+    .topbar h1{margin:0;font-size:18px;font-weight:700}
+    .container{max-width:980px;margin:18px auto;padding:0 12px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}} @media (max-width:600px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:18px}
+    .card h3{margin:0 0 6px} .card p{margin:0 0 14px;color:var(--muted)}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;background:#eee;color:#333;text-decoration:none;font-weight:600}
+    .btn:hover{background:#ddd} .btn-primary{background:var(--brand);color:#fff} .btn-primary:hover{background:var(--brand-600)}
+    footer{margin:26px 0;color:var(--muted);font-size:13px;text-align:center}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <h1>ỨNG DỤNG HỌC TẬP VÀ KIỂM TRA CHÍNH TRỊ CỦA BAN CHI HUY PTKV3 - TÂN YÊN/ BỘ CHQS TỈNH BẮC NINH</h1>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <h3>Làm bài kiểm tra</h3>
+        <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
+        <a class="btn btn-primary" href="quiz.html">Vào làm bài →</a>
+      </section>
+
+      <section class="card">
+        <h3>Tài liệu học tập</h3>
+        <p>PDF từ Word/PowerPoint đã xuất, lưu trên Google Drive.</p>
+        <a class="btn" href="materials.html">Mở tài liệu</a>
+      </section>
+
+      <section class="card">
+        <h3>Tra cứu kết quả</h3>
+        <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
+        <!-- Thay bằng link Sheets của anh -->
+        <a class="btn" href="#" target="_blank" rel="noopener">Mở bảng điểm</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>© Đơn vị: Ban Chỉ huy PTKV3 - Tân Yên</footer>
+</body>
+</html>
