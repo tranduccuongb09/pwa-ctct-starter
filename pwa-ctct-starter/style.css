@@ -62,14 +62,17 @@ input[type=text],input{width:100%;padding:10px;border:1px solid #ccc;border-radi
 }
 
 /* Ảnh nền desktop/mobile */
-body.home{
-  background:url("assets/bg-desktop.png") no-repeat center center fixed;
-  background-size:cover;
+body.home {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: url('assets/bg-desktop.png') no-repeat center/cover;
+  min-height: 100vh;
+  position: relative;
+  color: #fff;
 }
-@media (max-width:768px){
-  body.home{
-    background:url("assets/bg-mobile.png") no-repeat center center fixed;
-    background-size:cover;
+@media(max-width:768px){
+  body.home {
+    background: url('assets/bg-mobile.png') no-repeat center/cover;
   }
 }
 
@@ -125,3 +128,4 @@ body.home{
 
 /* Footer trang chủ */
 .home-footer{position:relative;z-index:1;text-align:center;color:#f9e2e2;font-size:14px;padding-bottom:26px;text-shadow:0 1px 4px rgba(0,0,0,.35)}
+
