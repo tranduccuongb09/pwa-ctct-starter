@@ -4,140 +4,78 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CTĐ, CTCT – Trang chủ</title>
+
   <link rel="manifest" href="manifest.webmanifest">
-  <style>
-    :root {
-      --brand: #a00000;
-      --brand-dark: #800000;
-      --bg-light: #fff7ed;
-      --text: #111827;
-      --muted: #6b7280;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--brand);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    .hero {
-      text-align: center;
-      padding: 40px 16px 20px;
-      color: #fff;
-      background: var(--brand);
-      background-image: url('assets/pattern.png'); /* nền mờ PNG */
-      background-size: cover;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 24px 16px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #fffaf3;
-      border-radius: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
-      padding: 24px 20px;
-      text-align: center;
-      transition: all .3s ease;
-      cursor: pointer;
-    }
-    .card:hover { transform: translateY(-4px); }
-    .card.active { border: 2px solid var(--brand); }
+  <!-- Dùng style.css đã cập nhật (có phần HOME) -->
+  <link rel="stylesheet" href="style.css" />
 
-    .icon {
-      font-size: 40px;
-      margin-bottom: 12px;
-      opacity: .9;
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
     }
-    .card h3 { margin: 0 0 8px; font-size: 18px; }
-    .card p { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all .3s ease;
-    }
-    .btn.disabled {
-      background: #f0f0f0;
-      color: #888;
-      pointer-events: none;
-    }
-    .btn.active {
-      background: var(--brand);
-      color: #fff;
-    }
-    footer {
-      margin: 30px 0;
-      text-align: center;
-      color: #f5dada;
-      font-size: 13px;
-    }
-  </style>
+  </script>
 </head>
-<body>
-  <header class="hero">
+<body class="home">
+  <!-- Lớp phủ làm chữ nổi trên ảnh nền -->
+  <div class="home-overlay" aria-hidden="true"></div>
+
+  <header class="home-hero">
     <h1>ỨNG DỤNG HỌC TẬP VÀ KIỂM TRA NHẬN THỨC CHÍNH TRỊ<br>
       CỦA BAN CHỈ HUY PTKV3 – TÂN YÊN / BỘ CHQS TỈNH BẮC NINH</h1>
   </header>
 
-  <main class="container">
-    <!-- Card 1: Tài liệu -->
-    <section class="card" data-link="materials.html">
-      <div class="icon">📖</div>
-      <h3>Tài liệu học tập</h3>
-      <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
-      <a class="btn disabled">Mở tài liệu</a>
-    </section>
+  <div class="home-wrap">
+    <main class="home-grid">
+      <!-- 1) Tài liệu học tập (đứng trước) -->
+      <section class="home-card" data-link="materials.html">
+        <div class="home-icon">📖</div>
+        <h3>Tài liệu học tập</h3>
+        <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
+        <a class="home-btn is-disabled">Mở tài liệu</a>
+      </section>
 
-    <!-- Card 2: Làm bài -->
-    <section class="card" data-link="quiz.html">
-      <div class="icon">📝</div>
-      <h3>Làm bài kiểm tra</h3>
-      <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
-      <a class="btn disabled">Vào làm bài</a>
-    </section>
+      <!-- 2) Làm bài kiểm tra -->
+      <section class="home-card" data-link="quiz.html">
+        <div class="home-icon">📝</div>
+        <h3>Làm bài kiểm tra</h3>
+        <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
+        <a class="home-btn is-disabled">Vào làm bài</a>
+      </section>
 
-    <!-- Card 3: Bảng điểm -->
-    <section class="card" data-link="https://docs.google.com/spreadsheets/d/ID/edit?usp=sharing">
-      <div class="icon">📊</div>
-      <h3>Tra cứu kết quả</h3>
-      <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
-      <a class="btn disabled" target="_blank" rel="noopener">Mở bảng điểm</a>
-    </section>
-  </main>
+      <!-- 3) Tra cứu kết quả -->
+      <section class="home-card"
+               data-link="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit?usp=sharing"
+               data-blank="1">
+        <div class="home-icon">📊</div>
+        <h3>Tra cứu kết quả</h3>
+        <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
+        <a class="home-btn is-disabled" rel="noopener">Mở bảng điểm</a>
+      </section>
+    </main>
 
-  <footer>© Đơn vị: Ban Chỉ huy PTKV3 – Tân Yên</footer>
+    <footer class="home-footer">© Đơn vị: Ban Chỉ huy PTKV3 – Tân Yên</footer>
+  </div>
 
   <script>
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click', ()=>{
-        document.querySelectorAll('.card').forEach(c=>{
-          c.classList.remove('active');
-          c.querySelector('.btn').classList.remove('active');
-          c.querySelector('.btn').classList.add('disabled');
+    // Chọn card -> nút mờ chuyển đỏ + gán link
+    document.querySelectorAll('.home-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.home-card').forEach(c => {
+          c.classList.remove('home-active');
+          const b = c.querySelector('.home-btn');
+          b.classList.remove('is-active');
+          b.classList.add('is-disabled');
         });
-        card.classList.add('active');
-        const btn = card.querySelector('.btn');
-        btn.classList.remove('disabled');
-        btn.classList.add('active');
-        const link = card.dataset.link;
-        if (btn.tagName==='A') btn.href = link;
+
+        card.classList.add('home-active');
+        const btn = card.querySelector('.home-btn');
+        btn.classList.remove('is-disabled');
+        btn.classList.add('is-active');
+
+        const href = card.dataset.link || '#';
+        const blank = card.dataset.blank === '1';
+        btn.href = href;
+        btn.target = blank ? '_blank' : '_self';
       });
     });
   </script>
