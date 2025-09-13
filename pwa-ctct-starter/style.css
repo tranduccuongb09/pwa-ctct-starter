@@ -1,6 +1,4 @@
-/* =========================
-   BASE & LEGACY (giữ nguyên)
-   ========================= */
+/* ===== Base (giữ cho trang khác) ===== */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -9,51 +7,16 @@ body{
   background:#f6f7fb; /* sẽ bị override ở body.home */
   color:#111;
 }
-.hero{background:#8B0000;color:#fff;padding:16px}
-.brand{display:flex;gap:16px;align-items:center}
-.logo{width:56px;height:56px;border-radius:12px}
-.subtitle{opacity:.9;margin:.2rem 0 0}
+
+/* Một số class cũ để không vỡ trang khác */
 .container{max-width:920px;margin:0 auto;padding:16px}
 .card{background:#fff;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.card.success{border:2px solid #2e7d32}
-.topbar{position:sticky;top:0;background:#8B0000;color:#fff;padding:12px 16px;display:flex;gap:16px;align-items:center;z-index:5}
-.topbar .back{color:#fff;text-decoration:none}
-.actions{display:flex;gap:12px;flex-wrap:wrap}
-.actions.spaced{justify-content:space-between}
 .btn{padding:12px 16px;border-radius:12px;border:1px solid #ccc;background:#fff;text-decoration:none;cursor:pointer;transition:transform .1s ease}
 .btn:hover{transform:translateY(-1px)}
 .btn.primary{background:#8B0000;color:#fff;border-color:#8B0000}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-input[type=text],input{width:100%;padding:10px;border:1px solid #ccc;border-radius:10px}
-.options{display:grid;gap:10px;margin:12px 0}
-.options label{display:flex;gap:10px;align-items:center;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fafafa}
-.footer{padding:24px;text-align:center;color:#555}
-.pdf-wrapper{height:70vh}
-.pdf{width:100%;height:100%;border-radius:12px;border:1px solid #ddd}
 
-/* Quiz cards (giữ + chỉnh gọn) */
-.question-card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.1);margin:20px auto;max-width:700px}
-.question-title{font-size:20px;font-weight:700;margin-bottom:8px}
-.question-text{font-size:18px;margin-bottom:16px}
-.options-list{margin:0;padding:0}
-.options-list label{
-  display:flex;align-items:flex-start;gap:12px;
-  background:#f9f9f9;border:1px solid #ddd;border-radius:10px;
-  padding:12px;margin-bottom:12px;cursor:pointer;transition:.15s;
-}
-.options-list label:hover{background:#f1f1f1;border-color:#bbb}
-.options-list input[type="radio"]{margin-top:3px}
-.quiz-actions{display:flex;justify-content:space-between;margin-top:20px}
-.btn-primary{background:#a00;color:#fff;padding:10px 20px;border-radius:8px;font-size:16px;border:none;cursor:pointer}
-.btn-primary:hover{background:#800}
-.btn-secondary{background:#eee;color:#333;padding:10px 20px;border-radius:8px;font-size:16px;border:none;cursor:pointer}
-.btn-secondary:hover{background:#ddd}
-
-
-/* =========================================
-   HOME PAGE (index.html) – nền ảnh + 3 card
-   Dùng lớp body.home để không ảnh hưởng trang khác
-   ========================================= */
+/* ===== HOME PAGE (index.html) ===== */
+/* Màu & biến */
 :root{
   --home-brand:#A41919;
   --home-cream:#FFF1DC;
@@ -61,68 +24,87 @@ input[type=text],input{width:100%;padding:10px;border:1px solid #ccc;border-radi
   --home-btn-beige:#F3D9B6;
 }
 
-/* Ảnh nền desktop/mobile */
+/* Ảnh nền: desktop mặc định, mobile < 768px
+   cover = tự co giãn phủ kín màn hình;
+   center = luôn căn giữa; fixed = hiệu ứng nhẹ khi cuộn */
 body.home{
-  background:url("assets/bg-desktop.png") no-repeat center center fixed;
+  background-image:url("assets/bg-desktop.png");
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-attachment:fixed;
   background-size:cover;
+  color:#fff;
+  min-height:100vh;
+  position:relative;
 }
 @media (max-width:768px){
   body.home{
-    background:url("assets/bg-mobile.png") no-repeat center center fixed;
-    background-size:cover;
+    background-image:url("assets/bg-mobile.png");
   }
 }
 
-/* Lớp phủ giúp chữ nổi rõ trên ảnh nền (tùy chọn: thêm <div class="home-overlay"> trong index.html) */
-.home-overlay{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.35) 40%,rgba(0,0,0,.25));pointer-events:none;z-index:0}
+/* Lớp phủ giúp chữ nổi trên ảnh */
+.home-overlay{
+  position:fixed; inset:0;
+  background:rgba(160,0,0,.45);
+  pointer-events:none; z-index:0;
+}
 
 /* Tiêu đề */
-.home-hero{position:relative;z-index:1;color:#fff;text-align:center;padding:42px 16px 24px}
+.home-hero{
+  position:relative; z-index:1;
+  text-align:center; padding:40px 16px 20px;
+}
 .home-hero h1{
-  margin:0 auto;max-width:980px;line-height:1.25;font-size:28px;font-weight:800;
-  text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.35);
+  margin:0; font-size:28px; line-height:1.3; font-weight:800;
+  text-transform:uppercase;
+  text-shadow:0 2px 10px rgba(0,0,0,.35);
+  color:#fff;
 }
 
-/* Grid & Card */
-.home-wrap{position:relative;z-index:1;padding:24px 0 42px}
+/* Lưới & thẻ */
+.home-wrap{position:relative; z-index:1;}
 .home-grid{
-  max-width:1040px;margin:0 auto;padding:0 16px;display:grid;gap:24px;
+  max-width:1040px; margin:0 auto; padding:24px 16px;
+  display:grid; gap:24px;
   grid-template-columns:repeat(3,minmax(0,1fr));
 }
-@media (max-width:1024px){.home-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:700px){.home-grid{grid-template-columns:1fr}}
+@media (max-width:1024px){ .home-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:700px){  .home-grid{grid-template-columns:1fr} }
 
 .home-card{
   background:var(--home-cream);
   border-radius:22px;
   padding:22px 20px;
   min-height:350px;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
   border:2px solid transparent;
   box-shadow:0 10px 28px rgba(0,0,0,.18);
-  transition:transform .2s, box-shadow .2s, border-color .2s;
-  cursor:pointer;
+  transition:.2s; cursor:pointer;
 }
-.home-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.25)}
-.home-card.home-active{border-color:var(--home-brand)}
+.home-card:hover{ transform:translateY(-4px); box-shadow:0 16px 36px rgba(0,0,0,.25) }
+.home-card.home-active{ border-color:var(--home-brand) }
 
 .home-icon{
-  width:88px;height:88px;margin:6px auto 14px;font-size:44px;
-  border-radius:18px;background:#FFE8C9;display:grid;place-items:center;
-  box-shadow:inset 0 0 0 2px rgba(0,0,0,.04)
+  width:88px; height:88px; margin:6px auto 14px;
+  border-radius:18px; background:#FFE8C9; display:grid; place-items:center;
+  font-size:44px; box-shadow:inset 0 0 0 2px rgba(0,0,0,.04);
 }
-.home-card h3{margin:4px 0 8px;font-size:22px;font-weight:800;color:#082032}
-.home-card p{margin:0 0 18px;color:#374151;font-size:15px;line-height:1.5;max-width:330px}
+.home-card h3{ margin:4px 0 8px; font-size:22px; font-weight:800; color:#082032 }
+.home-card p{ margin:0 0 18px; color:#374151; font-size:15px; line-height:1.5; max-width:330px }
 
-/* Nút trên card */
+/* Nút trong card */
 .home-btn{
-  margin-top:auto;min-width:190px;padding:12px 18px;border-radius:14px;
-  font-weight:800;border:none;text-decoration:none;cursor:pointer;transition:.2s;
+  margin-top:auto; min-width:190px;
+  padding:12px 18px; border-radius:14px; border:none;
+  font-weight:800; text-decoration:none; cursor:pointer; transition:.2s;
 }
-.home-btn:active{transform:translateY(1px)}
-.home-btn.is-disabled{background:var(--home-btn-beige);color:#0F172A;box-shadow:0 1px 0 rgba(0,0,0,.05);pointer-events:none}
-.home-btn.is-active{background:var(--home-brand);color:#fff;box-shadow:0 8px 18px rgba(164,25,25,.35)}
+.home-btn:active{ transform:translateY(1px) }
+.home-btn.is-disabled{ background:var(--home-btn-beige); color:#0F172A; box-shadow:0 1px 0 rgba(0,0,0,.05); pointer-events:none }
+.home-btn.is-active{ background:var(--home-brand); color:#fff; box-shadow:0 8px 18px rgba(164,25,25,.35) }
 
-/* Footer trang chủ */
-.home-footer{position:relative;z-index:1;text-align:center;color:#f9e2e2;font-size:14px;padding-bottom:26px;text-shadow:0 1px 4px rgba(0,0,0,.35)}
-
+.home-footer{
+  position:relative; z-index:1; text-align:center;
+  color:#f9e2e2; font-size:14px; padding-bottom:26px;
+  text-shadow:0 1px 4px rgba(0,0,0,.35)
+}
