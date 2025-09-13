@@ -22,33 +22,40 @@
     <h2 style="margin:0;font-size:18px">TÀI LIỆU HỌC TẬP</h2>
   </div>
 
-  <main class="container" id="list"></main>
+  <main class="container" id="list">
+    <p class="muted">Đang tải tài liệu…</p>
+  </main>
 
   <script>
-    // Đọc MATERIALS đã cấu hình trong app.js
-    const fallback = window.MATERIALS || [
-      {
-    title: 'BÀI DỰ THI CÁN BỘ GIẢNG DẠY CHÍNH TRỊ NĂM 2025',
-      url: 'https://drive.google.com/file/d/1ObsKlUfDj5hy4lPtcW9dShcH6K_LRvcT/preview'
-    },
-      {title: 'ĐẨY MẠNH HỌC TẬP VÀ LÀM THEO TƯ TƯỞNG HỒ CHÍ MINH VỀ TỰ PHÊ BÌNH VÀ PHÊ BÌNH TRONG QUÂN ĐỘI NHÂN DÂN VIỆT NAM HIỆN NAY',
-       url: 'https://drive.google.com/file/d/1guumgDxS1BBjWnKoYamVLHn-OD6lwPDz/preview'}
-    ];
-    const root = document.getElementById('list');
-    if (fallback.length === 0) {
-      root.innerHTML = '<p class="muted">Chưa cấu hình tài liệu. Hãy thêm các URL nhúng Google Drive vào biến MATERIALS trong <b>app.js</b>.</p>';
-    } else {
-      root.innerHTML = fallback.map(d => `
-        <section class="doc">
-          <h3>${d.title}</h3>
-          <p class="muted">Nếu không hiện, mở trực tiếp: <a href="${d.url}" target="_blank" rel="noopener">Link PDF</a></p>
-          <iframe allow="fullscreen" src="${d.url}"></iframe>
-        </section>
-      `).join('');
+    // ===== CẤU HÌNH (THAY GIÁ TRỊ 2 DÒNG NÀY) =====
+    const SHEET_API = 'https://script.google.com/macros/s/AKfycby3HoIrf6YrbUtGmsMEdLL8C6UwENUKKFqyXJhm-znNgDQ1ADXV0GDKQ-SmY5-auYmYmg/exec'; // ví dụ: https://script.google.com/macros/s/AKfycb.../exec
+    const MATERIALS_FOLDER_ID = 'https://drive.google.com/drive/folders/14Vwo5fxjSHtxu9mDOvNUDQrnve6pvrfK?usp=sharing'; // ví dụ: 1AbCdEfGh123...
+
+    async function loadMaterials(){
+      const root = document.getElementById('list');
+      try{
+        const url = `${SHEET_API}?action=materials&folderId=${encodeURIComponent(MATERIALS_FOLDER_ID)}`;
+        const res = await fetch(url, { cache: 'no-store' });
+        const data = await res.json();
+        const files = Array.isArray(data.files) ? data.files : [];
+
+        if (!files.length){
+          root.innerHTML = '<p class="muted">Chưa có PDF trong thư mục Google Drive đã chỉ định.</p>';
+          return;
+        }
+        root.innerHTML = files.map(d => `
+          <section class="doc">
+            <h3>${d.title}</h3>
+            <p class="muted">Nếu không hiển thị, mở trực tiếp:
+              <a href="${d.url}" target="_blank" rel="noopener">Link PDF</a></p>
+            <iframe allow="fullscreen" src="${d.url}"></iframe>
+          </section>
+        `).join('');
+      }catch(err){
+        root.innerHTML = '<p class="muted">Không tải được danh sách tài liệu. Kiểm tra URL Apps Script và quyền chia sẻ thư mục.</p>';
+      }
     }
+    loadMaterials();
   </script>
-  <script src="app.js"></script>
 </body>
 </html>
-
-
