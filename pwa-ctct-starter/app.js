@@ -1,5 +1,5 @@
 // ===== CẤU HÌNH =====
-const SHEET_API = 'https://script.google.com/macros/s/AKfycbz8GEp-kRhmzcyi3p5m4wQysmlh8VDTUz7aOXmfRkBRaMWVDp6sgqLS-Y8HS-vNI6WuMg/exec'; // URL /exec
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbzMljRGk-6Eeeu-qfUsc1xIZzwyEv04pvKBaa0j8OCbZSOyq-PXW9d50ldGHEtRnqsC4w/exec'; // URL /exec
 const BANKS_FOLDER_ID = '1_-YhEHfYfF957yC6o-xyiPk06XRheKb6'; // thư mục chứa .xlsx hoặc Google Sheets
 const TOTAL_QUESTIONS = 30;
 const DURATION_MINUTES = 30;
@@ -84,3 +84,4 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // ... giữ nguyên phần Next/Prev/Submit như bản trước ...
 });
+
