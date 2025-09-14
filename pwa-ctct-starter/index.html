@@ -6,7 +6,7 @@
   <title>CTĐ, CTCT – Trang chủ</title>
 
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 
   <script>
     if ('serviceWorker' in navigator) {
@@ -15,7 +15,6 @@
   </script>
 </head>
 <body class="home">
-  <!-- Lớp phủ làm chữ nổi trên ảnh nền -->
   <div class="home-overlay" aria-hidden="true"></div>
 
   <header class="home-hero">
@@ -23,37 +22,40 @@
       CỦA BAN CHỈ HUY PTKV3 – TÂN YÊN / BỘ CHQS TỈNH BẮC NINH</h1>
   </header>
 
-  <main class="container">
-    <!-- Tài liệu học tập -->
-    <section class="card" data-link="materials.html">
-      <img src="assets/icons/icon-materials.png" alt="Tài liệu học tập">
-      <h3>Tài liệu học tập</h3>
-      <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
-      <a class="btn disabled">Mở tài liệu</a>
-    </section>
+  <div class="home-wrap">
+    <main class="home-grid">
+      <!-- 1) Tài liệu học tập -->
+      <section class="home-card" data-link="materials.html">
+        <img class="home-icon-img" src="./assets/icons/icon-materials.png" alt="Tài liệu học tập">
+        <h3>Tài liệu học tập</h3>
+        <p>Nơi lưu trữ tài liệu học tập chính trị trong năm 2025.</p>
+        <a class="home-btn is-disabled">Mở tài liệu</a>
+      </section>
 
       <!-- 2) Làm bài kiểm tra -->
-      <section class="card" data-link="quiz.html">
-      <img src="assets/icons/icon-exam.png" alt="Làm bài kiểm tra">
-      <h3>Làm bài kiểm tra</h3>
-      <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
-      <a class="btn disabled">Vào làm bài</a>
-    </section>
+      <section class="home-card" data-link="quiz.html">
+        <img class="home-icon-img" src="./assets/icons/icon-exam.png" alt="Làm bài kiểm tra">
+        <h3>Làm bài kiểm tra</h3>
+        <p>30 câu – 30 phút. Hệ thống tự chấm điểm và ghi kết quả.</p>
+        <a class="home-btn is-disabled">Vào làm bài</a>
+      </section>
 
       <!-- 3) Tra cứu kết quả -->
-    <section class="card" data-link="https://docs.google.com/spreadsheets/d/ID/edit?usp=sharing">
-      <img src="assets/icons/icon-results.png" alt="Tra cứu kết quả">
-      <h3>Tra cứu kết quả</h3>
-      <p>Xem lại kết quả kiểm tra nhận thức tại đây.</p>
-      <a class="btn disabled" target="_blank" rel="noopener">Mở bảng điểm</a>
-    </section>
-  </main>
+      <section class="home-card"
+               data-link="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit?usp=sharing"
+               data-blank="1">
+        <img class="home-icon-img" src="./assets/icons/icon-results.png" alt="Tra cứu kết quả">
+        <h3>Tra cứu kết quả</h3>
+        <p>Mở Google Sheets: Tổng hợp và Chi tiết theo Mã đề.</p>
+        <a class="home-btn is-disabled" rel="noopener">Mở bảng điểm</a>
+      </section>
+    </main>
 
     <footer class="home-footer">© Đơn vị: Ban Chỉ huy PTKV3 – Tân Yên</footer>
   </div>
 
   <script>
-    // Click card -> bật nút, gán link (nút mờ -> đỏ)
+    // Chọn card -> bật nút (mờ -> đỏ) + gán link
     document.querySelectorAll('.home-card').forEach(card=>{
       card.addEventListener('click',()=>{
         document.querySelectorAll('.home-card').forEach(c=>{
@@ -73,5 +75,3 @@
   </script>
 </body>
 </html>
-
-
