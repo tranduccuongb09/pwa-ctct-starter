@@ -6,7 +6,7 @@
  **************************************************/
 
 /***** CẤU HÌNH (THAY GIÁ TRỊ 2 DÒNG NÀY) *****/
-const SHEET_API = 'https://script.google.com/macros/s/AKfycbzMljRGk-6Eeeu-qfUsc1xIZzwyEv04pvKBaa0j8OCbZSOyq-PXW9d50ldGHEtRnqsC4w/exec'; // URL /exec của Apps Script
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbyGbbKma1tvzQrmD7WzmMP0K5lk1ORKjY6yBAAwJ8PT73R_DMA0pGsDHbl5AWZtwK_xkA/exec'; // URL /exec của Apps Script
 const BANKS_FOLDER_ID = '1_-YhEHfYfF957yC6o-xyiPk06XRheKb6'; // Thư mục chứa Excel/Sheets ngân hàng câu hỏi
 
 // Số câu / thời gian / số câu tối đa lấy từ mỗi file (0 = không giới hạn)
@@ -176,22 +176,22 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('resultCard').hidden = false;
 
     // Gửi Google Sheet qua Apps Script
-    const examCode = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
     try{
-      await fetch(SHEET_API, {
-        method: 'POST',
-        mode: 'no-cors', // đơn giản hoá
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          examCode,
-          name, unit, position,
-          score, total,
-          details,
-          timestamp: new Date().toISOString()
-        })
-      });
+    await fetch(SHEET_API, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      examCode: '',              // ← để trống: server tự sinh mã đề 4 chữ số, tránh trùng
+      name, unit, position,
+      score, total,
+      details,
+      timestamp: new Date().toISOString()
+    })
+    });
     }catch(_){
       // bỏ qua lỗi mạng/no-cors
     }
   }
 });
+
