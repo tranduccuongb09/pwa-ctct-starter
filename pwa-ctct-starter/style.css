@@ -18,9 +18,9 @@ body{
 /* ===== TRANG CHỦ (HOME) ===== */
 body.home{
   /* Đặt !important để chắc chắn ghi đè mọi CSS cũ */
-  background-image:url("./assets/bg-desktop.png") !important;
+  background-image:url("bg-desktop.png") !important;
   background-repeat:no-repeat !important;
-  background-position:center center !important;
+  background-position:center !important;
   background-attachment:fixed !important;
   background-size:cover !important;
   color:#fff;
@@ -29,7 +29,7 @@ body.home{
 }
 @media (max-width:768px){
   body.home{
-    background-image:url("./assets/bg-mobile.png") !important;
+    background-image:url("bg-mobile.png") !important;
   }
 }
 
@@ -79,5 +79,6 @@ body.home{
   position:relative;z-index:1;text-align:center;color:#FFE699;font-size:14px;
   padding-bottom:26px;text-shadow:0 1px 4px rgba(0,0,0,.35)
 }
+
 
 
