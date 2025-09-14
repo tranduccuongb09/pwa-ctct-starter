@@ -6,7 +6,7 @@
  **************************************************/
 
 /***** CẤU HÌNH (THAY GIÁ TRỊ 2 DÒNG NÀY) *****/
-const SHEET_API = 'https://script.google.com/macros/s/AKfycbyGbbKma1tvzQrmD7WzmMP0K5lk1ORKjY6yBAAwJ8PT73R_DMA0pGsDHbl5AWZtwK_xkA/exec'; // URL /exec của Apps Script
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbx_rKQZR5QYRn_7uUkVl-KcohykyK6px7ztVRY-bpMAGPUmDuF0H3frwkPSH-JPA-Iy1Q/exec'; // URL /exec của Apps Script
 const BANKS_FOLDER_ID = '1_-YhEHfYfF957yC6o-xyiPk06XRheKb6'; // Thư mục chứa Excel/Sheets ngân hàng câu hỏi
 
 // Số câu / thời gian / số câu tối đa lấy từ mỗi file (0 = không giới hạn)
@@ -194,4 +194,5 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
 
