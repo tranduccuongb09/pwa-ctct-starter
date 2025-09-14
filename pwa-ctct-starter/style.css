@@ -47,9 +47,9 @@ body.home{
 .home-wrap{position:relative;z-index:1}
 .home-grid{
   max-width:1040px;margin:0 auto;padding:24px 16px;
-  display:grid;gap:28px;grid-template-columns:repeat(3,minmax(320,1fr));
+  display:grid;gap:28px;grid-template-columns:repeat(3,minmax(320px,1fr));
 }
-@media (max-width:1024px){.home-grid{grid-template-columns:repeat(2,minmax(320,1fr)}}
+@media (max-width:1024px){.home-grid{grid-template-columns:repeat(2,minmax(320px,1fr)}}
 @media (max-width:680px){.home-grid{grid-template-columns:1fr}}
 
 .home-card{
@@ -85,6 +85,7 @@ body.home{
   position:relative;z-index:1;text-align:center;color:#FFE699;font-size:14px;
   padding-bottom:26px;text-shadow:0 1px 4px rgba(0,0,0,.35)
 }
+
 
 
 
