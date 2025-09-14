@@ -10,7 +10,7 @@ body{
 
 :root{
   --home-brand:#A41919;
-  --home-cream:#FFF1DC;
+  --home-cream:#FFE6BE;
   --home-muted:#6B7280;
   --home-btn-beige:#F3D9B6;
 }
@@ -47,30 +47,30 @@ body.home{
 .home-wrap{position:relative;z-index:1}
 .home-grid{
   max-width:1040px;margin:0 auto;padding:24px 16px;
-  display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr));
+  display:grid;gap:28px;grid-template-columns:repeat(3,minmax(320,1fr));
 }
-@media (max-width:1024px){.home-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:700px){.home-grid{grid-template-columns:1fr}}
+@media (max-width:1024px){.home-grid{grid-template-columns:repeat(2,minmax(320,1fr)}}
+@media (max-width:680px){.home-grid{grid-template-columns:1fr}}
 
 .home-card{
   background:var(--home-cream);
-  border-radius:22px;padding:22px 20px;min-height:350px;
+  border-radius:22px;padding:28px 24px;min-height:420px;
   display:flex;flex-direction:column;align-items:center;text-align:center;
-  border:2px solid transparent;box-shadow:0 10px 28px rgba(0,0,0,.18);
+  border:1px solid rgba(0,0,0,.06);box-shadow:0 18px 50px rgba(0,0,0,.28);
   transition:.2s;cursor:pointer;
 }
 .home-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.25)}
 .home-card.home-active{border-color:var(--home-brand)}
 
 .home-icon-img {
-  width: 80px;   /* chỉnh lại cho hợp lý */
-  height: 80px;
+  width: 110px;   /* chỉnh lại cho hợp lý */
+  height: 110px;
   display: block;
   margin: 0 auto 16px;
   object-fit: contain;
 }
 .home-card h3{margin:4px 0 8px;font-size:22px;font-weight:800;color:#082032}
-.home-card p{margin:0 0 18px;color:#374151;font-size:15px;line-height:1.5;max-width:250px}
+.home-card p{margin:0 0 18px;color:#374151;font-size:15px;line-height:1.5;max-width:330px}
 
 /* Nút */
 .home-btn{
@@ -78,13 +78,14 @@ body.home{
   font-weight:800;text-decoration:none;cursor:pointer;transition:.2s;
 }
 .home-btn.is-disabled{background:var(--home-btn-beige);color:#0F172A;box-shadow:0 1px 0 rgba(0,0,0,.05);pointer-events:none}
-.home-btn.is-active{background:var(--home-brand);color:#fff;box-shadow:0 8px 18px rgba(164,25,25,.35)}
-
+.home-btn.is-active{background:var(--home-brand);color:#fff;box-shadow:0 10px 20px rgba(164,25,25,.32)}
+.home-btn:hover{ transform: translateY(-2px); }
 /* Footer vàng nhạt */
 .home-footer{
   position:relative;z-index:1;text-align:center;color:#FFE699;font-size:14px;
   padding-bottom:26px;text-shadow:0 1px 4px rgba(0,0,0,.35)
 }
+
 
 
 
